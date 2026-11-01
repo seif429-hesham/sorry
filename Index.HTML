@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BS Store</title>
+    <!-- ربط ملف التنسيقات CSS -->
+    <link rel="stylesheet" href="style.css">
+    <!-- خطوط عربية مميزة -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cairo:wght@400;600;700;800&family=Reem+Kufi:wght@500;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- العلامة المائية الممتدة على خلفية الموقع -->
+    <div class="watermark">BS Store</div>
+
+    <!-- عناصر الخلفية والقلوب المتساقطة -->
+    <div class="bg-overlay"></div>
+    <div id="hearts-container"></div>
+
+    <!-- كود الصوت/الأغنية -->
+    <audio id="bg-music" src="song.mp3" preload="auto"></audio>
+
+    <div class="main-container">
+
+        <!-- 1. الظرف التفاعلي -->
+        <div id="envelope-section" class="card-section active">
+            <div class="envelope-wrapper">
+                <div class="envelope">
+                    <!-- غطاء الظرف المثلث -->
+                    <div class="flap"></div>
+                    <!-- طيات الظرف السفلية -->
+                    <div class="pocket"></div>
+                    <!-- القلب النابض القابل للضغط للفتح -->
+                    <div class="heart-seal" id="heart-seal-btn" title="اضغط هنا للفتح">❤️</div>
+                </div>
+            </div>
+            <p class="click-hint">اضغط على القلب للفتح ✨</p>
+        </div>
+
+        <!-- 2. شاشة تسجبل الدخول (اسم المستخدم وكلمة السر) -->
+        <div id="password-section" class="card-section hidden">
+            <div class="glass-card">
+                <div class="lock-icon">🔒</div>
+                <h2>تسجيل الدخول للمتابعة</h2>
+                <div class="input-group-vertical">
+                    <input type="text" id="user-input" placeholder="اسم المستخدم" autocomplete="off">
+                    <input type="password" id="pass-input" placeholder="كلمة السر" autocomplete="off">
+                    <button id="pass-submit-btn">دخول <span class="heart-icon">❤️</span></button>
+                </div>
+                <p id="error-msg" class="error-msg hidden">اسم المستخدم أو كلمة السر غير صحيحة، حاول مجدداً!</p>
+            </div>
+        </div>
+
+        <!-- 3. المحتوى الرئيسي والرسالة -->
+        <div id="main-content-section" class="card-section hidden">
+            <div class="content-scroll-container">
+
+                <!-- عداد الوقت من تاريخ 16/2/2026 -->
+                <div class="timer-card">
+                    <h3>⏱️ العداد الزمني (منذ 16/02/2026)</h3>
+                    <div class="timer-subtext">الوقت المنقضي حتى اليوم</div>
+                    <div class="timer-display">
+                        <div class="time-box">
+                            <span id="months-val">0</span>
+                            <label>شهور</label>
+                        </div>
+                        <div class="time-box">
+                            <span id="days-val">0</span>
+                            <label>أيام</label>
+                        </div>
+                        <div class="time-box">
+                            <span id="hours-val">00</span>
+                            <label>ساعات</label>
+                        </div>
+                        <div class="time-box">
+                            <span id="minutes-val">00</span>
+                            <label>دقائق</label>
+                        </div>
+                        <div class="time-box highlight">
+                            <span id="seconds-val">00</span>
+                            <label>ثواني</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- كارت الرسالة النصية -->
+                <div class="prose-card custom-message-card">
+                    <p>
+                        أنا عارف إن المكتوب قدامك دلوقتي ممكن يكون صعب وصادم، بس حابب قبل أي كلمة أقولها، وقبل ما نقفل الصفحة دي، أفتكر معاكي حاجة واحدة بس.. طول الفترة اللي فاتت، ربنا يعلم إني شفت معاكي أيام وأوقات جميلة جداً وصادقة، وكل ضحكة وكل لحظة حلوة عشناها كانت حقيقية ومن القلب، وسبت جوايا طاقة إيجابية وذكريات نضيفة وجميلة هفضل شايلها بتقدير كبير طول عمري، ومهما حصل مستحيل أنسى الروح الطيبة اللي عرفتها فيكي.
+                    </p>
+                    <br>
+                    <p>
+                        بس زي ما بنبقى عارفين إن أجمل الحاجات أحياناً بتبدأ بطرق مش هي الصح، يمكن جه الوقت اللي لازم نقف فيه مع نفسنا وقفة بصدق.. لأننا من جوانا عارفين إن اللي كنا فيه ده كله مكنش صح من أساسه، وإن أي طريق ربنا مش راضي عن بدايته مفيش فيه بركة ولا أمان لقدام، وخوفنا من غضب ربنا لازم يكون أكبر من أي تعلق.
+                        أكيد زعلان وأنا بكتب الكلام ده دلوقتي، وصعب عليا جداً، بس ده الصح واللي يرضي ربنا في المقام الأول، لأننا عارفين من جوانا إن اللي كنا فيه ده كله مكنش صح، وإن أي طريق ربنا مش راضي عن بدايته مفيش فيه بركة ولا أمان لقدام.
+                    </p>
+                    <br>
+                    <p>
+                        ومع كل ده، مستحيل أنسى أبداً الوقت الجميل اللي قضيته معاكي، وكل تفصيلة طيبة وكل ضحكة جمعتنا؛ دي ذكريات غالية هفضل شايلها بتقدير كبير جوايا، بس الحقيقة المرة إننا لازم نقف هنا.
+                    </p>
+                    <br>
+                    <p>
+                        الظروف دلوقتي مختلفة والمسارات متباعدة، بس مؤمن تماماً وعندي يقين إن لو لينا الخير في بعض، ربنا هيجمعنا تاني في يوم من الأيام وبطريقة تليق برضاه علينا وبما يرضيه. بس في نفس الوقت، أنا مش عايزك أبداً توقفي حياتك عليا أو تستنيني؛ لو في يوم ربنا كتب لك النصيب ولقيتي الإنسان المناسب اللي يستاهلك ويقدرك ويحافظ عليكِ بالطريقة الصح، توكلي على الله ومتردديش أبداً.
+                    </p>
+                    <br>
+                    <p>
+                        أنا دعيت بصدق من قلبي، لو فيكي الخير ليا تكوني من نصيبي وقسمتي في الحلال، ولو مفيناش الخير مع بعض، فيارب يوفق كل واحد فينا في طريقه ويبعت له الأفضل ويسعد قلبه.
+                    </p>
+                    <br>
+                    <p class="final-salute">
+                        أشوف وشك بخير، وربنا يكتب لك كل توفيق وخير وسلامة في حياتك أينما كنتِ
+                    </p>
+                </div>
+
+                <div class="footer-note">
+                    BS Store ✨
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ربط ملف الـ JavaScript -->
+    <script src="script.js"></script>
+</body>
+
+</html>

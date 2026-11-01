@@ -1,0 +1,367 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Cairo', sans-serif;
+    /* خلفية اغمق وأنيقة داكنة */
+    background: #121214;
+    background: radial-gradient(circle at center, #1f1f25 0%, #0d0d0f 100%);
+    color: #f1f1f1;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* العلامة المائية الثابتة */
+.watermark {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-30deg);
+    font-size: 9vw;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.03);
+    pointer-events: none;
+    z-index: 1;
+    white-space: nowrap;
+    user-select: none;
+    font-family: 'Reem Kufi', sans-serif;
+}
+
+/* خلفية تظليل داكنة */
+.bg-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255, 77, 109, 0.05) 0%, rgba(0, 0, 0, 0.4) 100%);
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* عناصر القلوب المتساقطة */
+#hearts-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 3;
+}
+
+.floating-heart {
+    position: absolute;
+    color: #ff4d6d;
+    font-size: 20px;
+    animation: fall linear infinite;
+    opacity: 0.6;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-10vh) rotate(0deg);
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: translateY(105vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.main-container {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    max-width: 800px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.card-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.8s ease-in-out;
+}
+
+.hidden {
+    display: none !important;
+    opacity: 0;
+}
+
+/* 1. تصميم الظرف */
+.envelope-wrapper {
+    perspective: 1000px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.envelope {
+    width: 320px;
+    height: 220px;
+    background: #2a2a32;
+    position: relative;
+    border-radius: 12px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 77, 109, 0.2);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ff4d6d;
+}
+
+.envelope .flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 160px solid transparent;
+    border-right: 160px solid transparent;
+    border-top: 115px solid #ff4d6d;
+    z-index: 3;
+    pointer-events: none;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
+}
+
+.envelope .pocket {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 160px solid #222228;
+    border-right: 160px solid #222228;
+    border-bottom: 110px solid #1a1a20;
+    border-top: 110px solid transparent;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.heart-seal {
+    position: absolute;
+    top: 85px;
+    z-index: 10;
+    font-size: 42px;
+    cursor: pointer;
+    user-select: none;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.3s ease;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
+    animation: pulse-heart 1.8s infinite;
+}
+
+.heart-seal:hover {
+    transform: scale(1.3) rotate(-5deg);
+    filter: drop-shadow(0 0 12px rgba(255, 77, 109, 0.8));
+}
+
+@keyframes pulse-heart {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+}
+
+.click-hint {
+    font-size: 18px;
+    color: #ff4d6d;
+    font-weight: 700;
+    margin-top: 15px;
+}
+
+/* 2. شاشة تسجيل الدخول الزجاجية الداكنة */
+.glass-card {
+    background: rgba(30, 30, 38, 0.85);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 40px 30px;
+    border-radius: 20px;
+    text-align: center;
+    width: 100%;
+    max-width: 450px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+.lock-icon {
+    font-size: 45px;
+    margin-bottom: 15px;
+}
+
+.glass-card h2 {
+    font-size: 22px;
+    margin-bottom: 25px;
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.input-group-vertical {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+
+.input-group-vertical input {
+    padding: 14px 20px;
+    border-radius: 25px;
+    border: 1px solid #444452;
+    outline: none;
+    font-size: 16px;
+    text-align: center;
+    width: 85%;
+    background: #18181f;
+    color: #fff;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+    font-weight: 600;
+}
+
+.input-group-vertical input:focus {
+    border-color: #ff4d6d;
+}
+
+.input-group-vertical button {
+    padding: 12px 35px;
+    border-radius: 25px;
+    border: none;
+    background: #ff4d6d;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    box-shadow: 0 4px 15px rgba(255, 77, 109, 0.4);
+    margin-top: 5px;
+}
+
+.input-group-vertical button:hover {
+    background: #e63946;
+    transform: translateY(-2px);
+}
+
+.error-msg {
+    color: #ff4d6d;
+    font-size: 14px;
+    margin-top: 15px;
+    font-weight: 700;
+}
+
+/* 3. العداد والمحتوى الرئيسي */
+.content-scroll-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.timer-card {
+    background: rgba(25, 25, 32, 0.85);
+    border: 1px solid rgba(255, 77, 109, 0.3);
+    border-radius: 20px;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+.timer-card h3 {
+    color: #ff4d6d;
+    font-size: 20px;
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+
+.timer-subtext {
+    font-size: 14px;
+    color: #aaaaaa;
+    margin-bottom: 20px;
+}
+
+.timer-display {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.time-box {
+    background: #18181f;
+    padding: 12px 15px;
+    border-radius: 12px;
+    min-width: 85px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #33333d;
+}
+
+.time-box.highlight {
+    border-color: #ff4d6d;
+    background: #25161a;
+}
+
+.time-box span {
+    font-size: 26px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.time-box label {
+    font-size: 13px;
+    color: #ff4d6d;
+    margin-top: 4px;
+    font-weight: 600;
+}
+
+/* تنسيق كارت الرسالة النصية البارز والواضح */
+.prose-card {
+    background: rgba(25, 25, 32, 0.9);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 35px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    line-height: 2.2;
+    font-size: 20px; /* حجم خط كبير وواضح */
+    font-weight: 700; /* خط بولد */
+    color: #f1f1f1;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    text-align: justify;
+}
+
+.custom-message-card {
+    border-right: 4px solid #ff4d6d;
+}
+
+.final-salute {
+    color: #ff4d6d;
+    font-weight: 800;
+    text-align: center;
+    margin-top: 15px;
+    font-size: 21px;
+}
+
+.footer-note {
+    text-align: center;
+    color: #888888;
+    font-weight: 700;
+    font-size: 16px;
+    padding: 20px 0;
+}
